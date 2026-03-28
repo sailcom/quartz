@@ -1,3 +1,97 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+/* 首页引导区样式 */
+.intro-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--lightgray);
+}
+.intro-section h1 { margin-bottom: 0.5rem; }
+.intro-section p { color: var(--gray); font-size: 0.95em; line-height: 1.6; margin: 0; }
+
+/* 卡片网格布局 */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 极简风卡片设计 */
+.nav-card {
+  position: relative; /* 关键：给拉伸链接做定位参考 */
+  display: flex !important;
+  align-items: flex-start;
+  padding: 1.2rem;
+  background-color: var(--light) !important;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.nav-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--tertiary);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.nav-card .icon {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.nav-card .content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 强制清除 Quartz 的默认标题和段落间距 */
+.nav-card h4 {
+  margin: 0 0 0.3rem 0 !important;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none !important;
+}
+
+.nav-card p {
+  margin: 0 !important;
+  color: var(--gray) !important;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  background: transparent !important; /* 清除默认灰底 */
+  padding: 0 !important;
+}
+
+/* 拉伸链接：让整个卡片都可以点击，且没有下划线 */
+.stretched-link {
+  text-decoration: none !important;
+  color: var(--dark) !important;
+  background: transparent !important;
+}
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
+
+/* 当鼠标悬停在首页的卡片区域时，隐藏 Quartz 默认的链接弹出框 */
+body:has(.card-grid:hover) .popover {
+  display: none !important;
+  opacity: 0 !important;
+}
