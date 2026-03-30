@@ -8,8 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/sailcom/Owners-Handbook",
+      // GitHub: "https://github.com/sailcom/Owners-Handbook",
       "搏浪号": "https://imsail.com",
+      "联系邮箱：baodian@seek.li": "",
     },
   }),
 }
