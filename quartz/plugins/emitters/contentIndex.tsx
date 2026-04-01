@@ -19,6 +19,7 @@ export type ContentDetails = {
   richContent?: string
   date?: Date
   description?: string
+  weight?: number  //增加对weight的支持
 }
 
 interface Options {
@@ -115,6 +116,9 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
               : undefined,
             date: date,
             description: file.data.description ?? "",
+            weight: file.data.frontmatter?.weight    // 增加weight
+              ? Number(file.data.frontmatter.weight)
+              : undefined,
           })
         }
       }
