@@ -10,7 +10,7 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       // GitHub: "https://github.com/sailcom/Owners-Handbook",
       "搏浪号": "https://imsail.com",
-      "联系邮箱：baodian@seek.li": "",
+      "联系邮箱：baodian#seek.li（#替换为@）": "",
     },
   }),
 }
@@ -39,7 +39,16 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+  	  useSavedState: false,
+  		sortFn: (a, b) => {
+  		  const wA = Number(a.data?.weight ?? 9999)
+  		  const wB = Number(b.data?.weight ?? 9999)
+  		  if (wA !== wB) return wA - wB
+  		  return a.displayName.localeCompare(b.displayName, "zh-CN")
+  		},
+  	  order: ["sort", "filter", "map"],
+	}),
   ],
   right: [
     // Component.Graph(),
@@ -63,7 +72,16 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+  	  useSavedState: false,
+  		sortFn: (a, b) => {
+  		  const wA = Number(a.data?.weight ?? 9999)
+  		  const wB = Number(b.data?.weight ?? 9999)
+  		  if (wA !== wB) return wA - wB
+  		  return a.displayName.localeCompare(b.displayName, "zh-CN")
+  		},
+  	  order: ["sort", "filter", "map"],
+	}),
   ],
   right: [],
 }
