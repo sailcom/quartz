@@ -10,7 +10,7 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       // GitHub: "https://github.com/sailcom/Owners-Handbook",
       "搏浪号": "https://imsail.com",
-      "联系邮箱：baodian#seek.li（#替换为@）": "",
+      "联系邮箱：baodian＠seek.li": "mailto:baodian@seek.li",
     },
   }),
 }
