@@ -42,11 +42,21 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer({
   	  useSavedState: false,
   		sortFn: (a, b) => {
-  		  const wA = Number(a.data?.weight ?? 9999)
-  		  const wB = Number(b.data?.weight ?? 9999)
-  		  if (wA !== wB) return wA - wB
-  		  return a.displayName.localeCompare(b.displayName, "zh-CN")
-  		},
+		  const wA = a.data?.weight
+		  const wB = b.data?.weight
+		
+		  if (wA != null && wB != null) return Number(wA) - Number(wB)
+		  if (wA != null) return -1
+		  if (wB != null) return 1
+		
+		  const dA = a.data?.date ? new Date(a.data.date).getTime() : null
+		  const dB = b.data?.date ? new Date(b.data.date).getTime() : null
+		  if (dA != null && dB != null) return dB - dA
+		  if (dA != null) return -1
+		  if (dB != null) return 1
+		
+		  return a.displayName.localeCompare(b.displayName, "zh-CN")
+		},
   	  order: ["sort", "filter", "map"],
 	}),
   ],
@@ -75,11 +85,21 @@ export const defaultListPageLayout: PageLayout = {
     Component.Explorer({
   	  useSavedState: false,
   		sortFn: (a, b) => {
-  		  const wA = Number(a.data?.weight ?? 9999)
-  		  const wB = Number(b.data?.weight ?? 9999)
-  		  if (wA !== wB) return wA - wB
-  		  return a.displayName.localeCompare(b.displayName, "zh-CN")
-  		},
+		  const wA = a.data?.weight
+		  const wB = b.data?.weight
+		
+		  if (wA != null && wB != null) return Number(wA) - Number(wB)
+		  if (wA != null) return -1
+		  if (wB != null) return 1
+		
+		  const dA = a.data?.date ? new Date(a.data.date).getTime() : null
+		  const dB = b.data?.date ? new Date(b.data.date).getTime() : null
+		  if (dA != null && dB != null) return dB - dA
+		  if (dA != null) return -1
+		  if (dB != null) return 1
+		
+		  return a.displayName.localeCompare(b.displayName, "zh-CN")
+		},
   	  order: ["sort", "filter", "map"],
 	}),
   ],
