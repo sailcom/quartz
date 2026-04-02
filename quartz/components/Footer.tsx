@@ -25,21 +25,10 @@ export default ((opts?: Options) => {
           ))}
         </ul>
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-82B5MTX91Z"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-82B5MTX91Z');
-            `,
-          }}
-        />
+        <!-- Google -->
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3098119807032812"
      crossorigin="anonymous"></script>
-        
+
       </footer>
     )
   }
