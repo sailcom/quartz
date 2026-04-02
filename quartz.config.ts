@@ -81,9 +81,19 @@ const config: QuartzConfig = {
       Plugin.ContentPage(),
       Plugin.FolderPage({
 		    sort: (a, b) => {
-			    const wA = Number(a.frontmatter?.weight ?? 9999)
-			    const wB = Number(b.frontmatter?.weight ?? 9999)
-			    if (wA !== wB) return wA - wB
+			    const wA = a.frontmatter?.weight
+			    const wB = b.frontmatter?.weight
+				
+			    if (wA != null && wB != null) return Number(wA) - Number(wB)
+			    if (wA != null) return -1
+			    if (wB != null) return 1
+
+			    const dA = a.dates?.created?.getTime() ?? null
+			    const dB = b.dates?.created?.getTime() ?? null
+			    if (dA != null && dB != null) return dB - dA
+			    if (dA != null) return -1
+			    if (dB != null) return 1
+				
 			    return (a.frontmatter?.title ?? "").localeCompare(b.frontmatter?.title ?? "", "zh-CN")
 		    },
 		  }),
